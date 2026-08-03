@@ -6,6 +6,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.39.0-FF4B4B?logo=streamlit)](https://streamlit.io/)
 [![OpenSearch](https://img.shields.io/badge/OpenSearch-2.19.2-005EB8?logo=opensearch)](https://opensearch.org/)
 [![Ollama](https://img.shields.io/badge/Ollama-Local%20LLMs-black?logo=ollama)](https://ollama.com/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 ---
@@ -411,6 +412,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<div align="center">
-  Made with ❤️ for privacy-first AI
-</div>
+
