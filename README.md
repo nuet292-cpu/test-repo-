@@ -1,415 +1,184 @@
-# 📝 Local RAG System with LLMs
+# RAG Chatbot — Chat with Your Own Documents
 
-> **Build a fully private, offline Retrieval-Augmented Generation (RAG) system** for managing and querying your personal documents — no cloud required.
+This project lets you run a fully local **RAG-based (Retrieval-Augmented Generation)** chatbot using your own PDFs or web content. Ask questions in natural language and get answers grounded in the actual contents of your documents.
 
-[![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.39.0-FF4B4B?logo=streamlit)](https://streamlit.io/)
-[![OpenSearch](https://img.shields.io/badge/OpenSearch-2.19.2-005EB8?logo=opensearch)](https://opensearch.org/)
-[![Ollama](https://img.shields.io/badge/Ollama-Local%20LLMs-black?logo=ollama)](https://ollama.com/)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+![1_tEelGLOyg6n7oUJ0a1fMUA](https://github.com/user-attachments/assets/ec00a9d7-53f7-4c52-b51c-0c565f92521c)
 
----
+Built with:
 
-## 📸 UI Preview
-
-| Welcome Page | Chatbot in Action |
-|:---:|:---:|
-| ![Welcome Page](images/ui-1.png) | ![Chatbot Page](images/ui-2.png) |
+- [LangChain](https://www.langchain.com/) — orchestration and prompt management
+- [FAISS](https://github.com/facebookresearch/faiss) — fast semantic vector search
+- [Ollama](https://ollama.com) — run open-source LLMs locally
+- [Streamlit](https://streamlit.io) — interactive chat interface
 
 ---
 
-## 🌟 Key Features
+## ✨ Features
 
-| Feature | Description |
-|---|---|
-| 🔒 **Privacy-First** | All processing is local — no data leaves your machine |
-| 🔍 **Hybrid Search** | Combines BM25 keyword search + semantic vector search via OpenSearch |
-| 🤖 **Local LLM Chat** | Conversational Q&A powered by Ollama (supports Qwen3, LLaMA, etc.) |
-| 📄 **PDF Ingestion** | Upload PDFs, extract text, chunk, embed, and index automatically |
-| 👁️ **OCR Fallback** | Uses Tesseract OCR for image-heavy or scanned PDFs |
-| ⚙️ **Configurable** | Tune embedding models, chunk size, LLM, and search weights in one file |
+- 📄 Upload PDFs or paste website URLs as your knowledge source
+- 🧠 Store document chunks as embeddings in a local FAISS vector store
+- 🔍 Retrieve relevant context using semantic similarity search
+- 💬 Generate context-aware answers via a local LLM
+- 💾 Persist conversation history across page refreshes
+- 💻 100% local — no API keys, no data sent to the cloud
 
 ---
 
-## 🗂️ Project Structure
+## 🚀 Getting Started
 
-```
-Basic_RAG/
-│
-├── Welcome.py                         # 🏠 Streamlit entry point (home page)
-│
-├── pages/
-│   ├── 1_🤖_Chatbot.py               # 💬 Chatbot page with RAG toggle
-│   └── 2_📄_Upload_Documents.py      # 📁 PDF upload, indexing & management
-│
-├── src/                               # 🧠 Core backend logic
-│   ├── constants.py                   # ⚙️  All configurable settings
-│   ├── embeddings.py                  # 🔢 Sentence-Transformer embedding model
-│   ├── chat.py                        # 🗣️  Ollama LLM chat & prompt builder
-│   ├── ingestion.py                   # 📥 OpenSearch index creation & bulk indexing
-│   ├── opensearch.py                  # 🔍 Hybrid search (BM25 + kNN)
-│   ├── ocr.py                         # 👁️  Tesseract OCR for scanned PDFs
-│   ├── utils.py                       # 🛠️  Text chunking, cleaning, logging
-│   ├── index_config.json              # 📋 OpenSearch index mapping & settings
-│   └── __init__.py
-│
-├── notebooks/
-│   ├── 01_Prerequisites_and_Environment_Setup.ipynb
-│   ├── 02_OpenSearch_Index_and_Ingestion_standalone.ipynb
-│   └── 03_Hybrid_Search_and_Retrieval.ipynb
-│
-├── images/
-│   ├── ui-1.png                       # Welcome page screenshot
-│   └── ui-2.png                       # Chatbot page screenshot
-│
-├── uploaded_files/                    # 📂 Stores uploaded PDFs locally
-├── embedding_model/                   # 🗄️  Optional: cached local embedding model
-├── logs/                              # 📝 Application log files
-│
-├── requirements.txt                   # Python dependencies
-├── pyproject.toml                     # Project metadata
-├── mypy.ini                           # Type-checking config
-└── .gitignore
-```
+### 1. Install Ollama
 
----
+Download and install [Ollama](https://ollama.com/download) for your operating system.
 
-## ⚡ Quick Start
-
-### Step 1 — Prerequisites
-
-Make sure these are installed on your system:
-
-| Tool | Version | Link |
-|---|---|---|
-| Python | 3.11+ | https://www.python.org/downloads/ |
-| Docker Desktop | Latest | https://www.docker.com/products/docker-desktop/ |
-| Ollama | Latest | https://ollama.com/download |
-| Tesseract OCR | Latest | See [OCR Setup](#6--ocr-setup-tesseract--poppler) |
-| `uv` (fast pip) | Latest | `pip install uv` |
-
----
-
-### Step 2 — Clone & Set Up Environment
+Then pull the two required models — the **chat model** and the **embedding model**:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Aman554-EQ/basic-RAG-pipeline.git
-cd basic-RAG-pipeline
+ollama pull llama3.2:1b
+ollama pull nomic-embed-text
+```
 
-# Create and activate a virtual environment
+> **Note:** Both models are required. `llama3.2:1b` handles question-answering and `nomic-embed-text` handles document embedding.
+
+---
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/Aman554-EQ/RAG-Ollama-LangChain.git
+cd RAG-Ollama-LangChain
+```
+
+---
+
+### 3. Create and Activate a Virtual Environment
+
+```bash
+# Create virtual environment
 python -m venv .venv
 
-# Windows (PowerShell)
-.venv\Scripts\Activate.ps1
+# Activate on Windows
+.venv\Scripts\activate
 
-# macOS / Linux
+# Activate on macOS / Linux
 source .venv/bin/activate
-
-# Install kernel support (for notebooks)
-uv pip install ipykernel
-python -m ipykernel install --user --name=basic-rag --display-name "Python (Basic RAG)"
 ```
 
 ---
 
-### Step 3 — Install Python Dependencies
+### 4. Install Dependencies
 
 ```bash
-uv pip install -r requirements.txt
+pip install -r requirements.txt
 ```
-
-**Dependencies installed:**
-
-| Package | Version | Purpose |
-|---|---|---|
-| `streamlit` | 1.39.0 | Web UI framework |
-| `sentence-transformers` | 3.4.1 | Embedding model |
-| `opensearch-py` | 2.7.1 | OpenSearch Python client |
-| `ollama` | 0.3.3 | Local LLM inference |
-| `PyPDF2` | 3.0.1 | PDF text extraction |
-| `pytesseract` | 0.3.13 | OCR for scanned PDFs |
-| `pillow` | 10.4.0 | Image processing |
-| `torch` | 2.6.0 | ML tensor operations |
-| `numpy` | 2.1.2 | Numerical computing |
-| `requests` | 2.32.3 | HTTP client |
 
 ---
 
-### Step 4 — Start Ollama & Pull a Model
+### 5. Run the App
 
 ```bash
-# Pull the recommended model (8B parameters, good quality/speed tradeoff)
-ollama pull qwen3:8b
-
-# Or use a lighter model
-ollama pull llama3.2:1b
+streamlit run src/chat_ui.py
 ```
 
-> **Note:** The default model is `llama3.2:1b` as set in `src/constants.py`. Change `OLLAMA_MODEL_NAME` to match whichever model you pull.
-
-Browse available models: https://ollama.com/library
+The app will open automatically at [http://localhost:8501](http://localhost:8501).
 
 ---
 
-### Step 5 — Start OpenSearch with Docker
+## 🐳 Docker Setup (Optional)
 
-**5.1 — Pull and run OpenSearch:**
+To run the app inside a Docker container:
 
 ```bash
-docker pull opensearchproject/opensearch:2.19.2
-docker pull opensearchproject/opensearch-dashboards:2.19.2
+# Build the image
+docker build -t rag-chatbot .
 
-# Start OpenSearch node
-docker run -d --name opensearch \
-  -p 9200:9200 -p 9600:9600 \
-  -e "discovery.type=single-node" \
-  -e "DISABLE_SECURITY_PLUGIN=true" \
-  opensearchproject/opensearch:2.19.2
-
-# Start OpenSearch Dashboard (optional but recommended)
-docker run -d --name opensearch-dashboards \
-  -p 5601:5601 \
-  --link opensearch:opensearch \
-  -e "OPENSEARCH_HOSTS=http://opensearch:9200" \
-  -e "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" \
-  opensearchproject/opensearch-dashboards:2.19.2
+# Run the container
+docker run -p 8501:8501 rag-chatbot
 ```
 
-Visit **http://localhost:5601** to access the OpenSearch Dashboard. ✅
+Then open [http://localhost:8501](http://localhost:8501) in your browser.
 
-**5.2 — Configure the Hybrid Search Pipeline:**
-
-Open the OpenSearch Dashboard → **Dev Tools** → paste and run:
-
-```json
-PUT /_search/pipeline/nlp-search-pipeline
-{
-  "description": "Post processor for hybrid search",
-  "phase_results_processors": [
-    {
-      "normalization-processor": {
-        "normalization": {
-          "technique": "min_max"
-        },
-        "combination": {
-          "technique": "arithmetic_mean",
-          "parameters": {
-            "weights": [0.3, 0.7]
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
-> The `0.3 / 0.7` weights favour semantic (vector) search over keyword (BM25) matching. Adjust to your preference.
+> **Note:** The container needs access to a running Ollama instance. Make sure Ollama is running on your host machine and configure it to accept connections (e.g., set `OLLAMA_HOST=host.docker.internal` if needed).
 
 ---
 
-### Step 6 — OCR Setup (Tesseract + Poppler)
+## 📂 Usage
 
-Required for processing scanned or image-heavy PDFs.
+Once the app is running:
 
-**macOS:**
-```bash
-brew install tesseract poppler
-```
-
-**Windows:**
-1. Install **Tesseract** from [UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki) or via winget:
-   ```powershell
-   winget install Tesseract-OCR
-   ```
-2. Install **Poppler** — download from [oschwartz10612/poppler-windows](https://github.com/oschwartz10612/poppler-windows/releases) and add `C:\poppler\<version>\bin` to your system `PATH`.
-
-**Linux:**
-```bash
-sudo apt install tesseract-ocr poppler-utils
-```
-
-**Install Python OCR libraries:**
-```bash
-uv pip install pytesseract pdf2image Pillow fpdf2
-```
-
-> **Windows tip:** If Tesseract isn't found automatically, set the path in `src/ocr.py`:
-> ```python
-> pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-> ```
+1. **Upload PDFs** via the sidebar — they are chunked, embedded, and stored in the FAISS index.
+2. **Add website URLs** in the sidebar text area — web pages are fetched, chunked, and indexed the same way.
+3. **Ask questions** in the chat input — the app retrieves the most relevant document chunks and answers using the local LLM.
+4. **Reset** the conversation at any time using the 🗑️ button in the sidebar.
 
 ---
 
-### Step 7 — Configure the App
+## 🏛️ Architecture
 
-Edit [`src/constants.py`](src/constants.py) to match your environment:
+![1_gXq3HJeXbPO2aGgFDYh0TA](https://github.com/user-attachments/assets/b492d7a7-d280-40ff-b92b-534cd1c415e7)
 
-```python
-# ── Embedding model ──────────────────────────────────────────────
-EMBEDDING_MODEL_PATH = "sentence-transformers/all-MiniLM-L6-v2"
-# Use "embedding_model/" to point to a local cached copy
-ASSYMETRIC_EMBEDDING = False   # Set True for asymmetric models (e.g. msmarco)
-EMBEDDING_DIMENSION  = 384     # Must match the model's output dimension
-
-# ── Text chunking ─────────────────────────────────────────────────
-TEXT_CHUNK_SIZE = 300          # Characters per chunk
-
-# ── Ollama LLM ───────────────────────────────────────────────────
-OLLAMA_MODEL_NAME = "llama3.2:1b"   # Any model pulled via `ollama pull`
-
-# ── OpenSearch (do not change unless self-hosting differently) ────
-OPENSEARCH_HOST  = "localhost"
-OPENSEARCH_PORT  = 9200
-OPENSEARCH_INDEX = "documents"
-```
-
----
-
-### Step 8 — Run the App 🚀
-
-```bash
-streamlit run Welcome.py
-```
-
-Open **http://localhost:8501** in your browser.
-
----
-
-## 🖥️ App Pages
-
-### 🏠 Welcome (`Welcome.py`)
-The landing page. Introduces the app and provides navigation to the sidebar pages.
-
-### 🤖 Chatbot (`pages/1_🤖_Chatbot.py`)
-- Type any question into the chat input
-- **Enable RAG mode** (sidebar toggle) to ground answers in your uploaded documents via hybrid search
-- Adjust **Number of Results in Context Window** and **Response Temperature** from the sidebar
-- Chat history is maintained within the session
-
-### 📄 Upload Documents (`pages/2_📄_Upload_Documents.py`)
-- Drag and drop one or more **PDF files**
-- Text is extracted → chunked → embedded → indexed into OpenSearch automatically
-- Manage uploaded documents (view, delete) from the expandable panel
-- Supports both native PDF text extraction and **OCR fallback** for scanned pages
-
----
-
-## 🏗️ Architecture
-
-```
-User Query
-    │
-    ▼
-┌─────────────────┐
-│  Streamlit UI   │  ← pages/1_🤖_Chatbot.py
-└────────┬────────┘
-         │ query text
-         ▼
-┌─────────────────┐        ┌──────────────────────────┐
-│  Embedding      │        │  OpenSearch (Docker)      │
-│  Model          │───────▶│  Hybrid Search Pipeline   │
-│  (MiniLM-L6-v2) │  embed │  ┌──────────┬──────────┐ │
-└─────────────────┘  query │  │  BM25    │  kNN     │ │
-                           │  │ (0.3 wt) │ (0.7 wt) │ │
-                           │  └──────────┴──────────┘ │
-                           └────────────┬─────────────┘
-                                        │ top-k chunks
-                                        ▼
-                           ┌─────────────────────────┐
-                           │  Prompt Builder          │
-                           │  (context + history)     │
-                           └────────────┬────────────┘
-                                        │ full prompt
-                                        ▼
-                           ┌─────────────────────────┐
-                           │  Ollama  (local LLM)     │
-                           │  streaming response      │
-                           └────────────┬────────────┘
-                                        │
-                                        ▼
-                              Response in Chat UI
-```
-
-**Document Ingestion Flow:**
-
-```
-PDF Upload
-    │
-    ▼
-┌───────────────┐    ┌──────────────┐    ┌──────────────────┐
-│ Text Extract  │───▶│ Text Chunker │───▶│ Embedding Model  │
-│ (PyPDF2 /OCR) │    │ (300 chars)  │    │ (MiniLM-L6-v2)   │
-└───────────────┘    └──────────────┘    └────────┬─────────┘
-                                                  │ vectors
-                                                  ▼
-                                    ┌─────────────────────────┐
-                                    │  OpenSearch Bulk Index   │
-                                    │  { text, embedding,      │
-                                    │    document_name }       │
-                                    └─────────────────────────┘
-```
-
----
-
-## 📓 Jupyter Notebooks
-
-The `notebooks/` folder contains step-by-step exploration notebooks:
-
-| Notebook | Description |
+| Component | Description |
 |---|---|
-| `01_Prerequisites_and_Environment_Setup.ipynb` | Install Docker, Ollama, verify all dependencies |
-| `02_OpenSearch_Index_and_Ingestion_standalone.ipynb` | Index creation, document ingestion, and embedding walkthrough |
-| `03_Hybrid_Search_and_Retrieval.ipynb` | Run hybrid BM25 + kNN searches and inspect results |
+| **`chat_ui.py`** | Streamlit interface — handles file uploads, URL input, chat display, and session state |
+| **`llm_rag.py`** | Core RAG handler — retrieves context from the vector store, builds prompts, calls the LLM, and maintains conversation history |
+| **`vector_store.py`** | FAISS wrapper — loads, chunks, embeds, and stores documents; persists the index to disk |
+| **`conversation.py`** | Conversation persistence — serializes and deserializes chat history to/from a local JSON file |
 
-> **To use notebooks:** Select the `basic-rag` kernel (installed in Step 2) via **Kernel → Change Kernel**.
+### Flow
 
----
-
-## 🧩 Source Module Reference
-
-| Module | File | Responsibility |
-|---|---|---|
-| Constants | [`src/constants.py`](src/constants.py) | All configurable app settings |
-| Embeddings | [`src/embeddings.py`](src/embeddings.py) | Load `SentenceTransformer`, generate embeddings |
-| Chat | [`src/chat.py`](src/chat.py) | Build prompts, call Ollama, stream responses |
-| Ingestion | [`src/ingestion.py`](src/ingestion.py) | Create/delete index, bulk-index documents |
-| OpenSearch | [`src/opensearch.py`](src/opensearch.py) | Client init, hybrid search query |
-| OCR | [`src/ocr.py`](src/ocr.py) | Extract text from scanned/image PDFs via Tesseract |
-| Utils | [`src/utils.py`](src/utils.py) | Text chunking, cleaning, logging setup |
-| Index Config | [`src/index_config.json`](src/index_config.json) | OpenSearch mapping (kNN + BM25 settings) |
-
----
-
-## 🔧 Troubleshooting
-
-| Problem | Solution |
-|---|---|
-| `docker: command not found` | Reboot after Docker Desktop install; ensure it's on `PATH` |
-| `ollama: connection refused` | Run `ollama serve` in a separate terminal |
-| `opensearch connection error` | Confirm Docker container is running: `docker ps` |
-| `tesseract not found` | Set `pytesseract.pytesseract.tesseract_cmd` path in `src/ocr.py` |
-| `embedding model download slow` | Pre-cache with `sentence-transformers` or point to `embedding_model/` dir |
-| Streamlit `ModuleNotFoundError` | Ensure `.venv` is activated before running `streamlit run Welcome.py` |
+```
+User Question
+     │
+     ▼
+Vector Store ──► Retrieve top-k similar chunks
+     │
+     ▼
+Prompt Template (question + context + history)
+     │
+     ▼
+Local LLM (Ollama / llama3.2:1b)
+     │
+     ▼
+Answer displayed in chat
+```
 
 ---
 
-## 🛣️ Roadmap / Ideas
+## 📁 Project Structure
 
-- [ ] Support DOCX and TXT file formats
-- [ ] Add document preview in the Upload page
-- [ ] Multi-user session support
-- [ ] Persistent chat history across sessions
-- [ ] Re-ranking with cross-encoder models
-- [ ] Docker Compose file for one-command startup
+```
+RAG-Ollama-LangChain/
+├── src/
+│   ├── chat_ui.py          # Streamlit app entry point
+│   ├── llm_rag.py          # LLM + RAG logic
+│   ├── vector_store.py     # FAISS vector store management
+│   └── conversation.py     # Conversation history persistence
+├── Dockerfile              # Docker configuration
+├── requirements.txt        # Python dependencies
+└── README.md
+```
+
+> Runtime-generated directories (`faiss_index/`, `uploaded_pdfs/`, `conversation.json`) are excluded from version control via `.gitignore`.
+
+---
+
+## ⚠️ Limitations
+
+- Initial PDF parsing and embedding may take several seconds for large files.
+- Response latency depends on the chosen LLM and your hardware.
+- The chatbot runs only locally; cloud deployment requires additional configuration for Ollama connectivity.
+
+---
+
+## 💡 Ideas for Future Improvements
+
+- History-aware retrieval (query rewriting based on conversation context)
+- Tool calling and agentic RAG
+- Additional data sources (Google Drive, Notion, local folders)
+- Cloud deployment
+- Document summarization and answer citation
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-
+MIT License. See [LICENSE](LICENSE) for details.
