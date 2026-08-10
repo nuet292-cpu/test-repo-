@@ -1,184 +1,233 @@
-# RAG Chatbot — Chat with Your Own Documents
+# 🐍 Python for Machine Learning & Data Science
 
-This project lets you run a fully local **RAG-based (Retrieval-Augmented Generation)** chatbot using your own PDFs or web content. Ask questions in natural language and get answers grounded in the actual contents of your documents.
-
-![1_tEelGLOyg6n7oUJ0a1fMUA](https://github.com/user-attachments/assets/ec00a9d7-53f7-4c52-b51c-0c565f92521c)
-
-Built with:
-
-- [LangChain](https://www.langchain.com/) — orchestration and prompt management
-- [FAISS](https://github.com/facebookresearch/faiss) — fast semantic vector search
-- [Ollama](https://ollama.com) — run open-source LLMs locally
-- [Streamlit](https://streamlit.io) — interactive chat interface
+> A structured, beginner-to-intermediate teaching repository covering the **core Python data science stack** — from NumPy fundamentals all the way to your first scikit-learn ML models.
 
 ---
 
-## ✨ Features
+## 📚 Table of Contents
 
-- 📄 Upload PDFs or paste website URLs as your knowledge source
-- 🧠 Store document chunks as embeddings in a local FAISS vector store
-- 🔍 Retrieve relevant context using semantic similarity search
-- 💬 Generate context-aware answers via a local LLM
-- 💾 Persist conversation history across page refreshes
-- 💻 100% local — no API keys, no data sent to the cloud
-
----
-
-## 🚀 Getting Started
-
-### 1. Install Ollama
-
-Download and install [Ollama](https://ollama.com/download) for your operating system.
-
-Then pull the two required models — the **chat model** and the **embedding model**:
-
-```bash
-ollama pull llama3.2:1b
-ollama pull nomic-embed-text
-```
-
-> **Note:** Both models are required. `llama3.2:1b` handles question-answering and `nomic-embed-text` handles document embedding.
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Repository Structure](#repository-structure)
+- [Learning Path](#learning-path)
+  - [1. Functions and Modules](#1-functions--modules)
+  - [2. NumPy Fundamentals](#2-numpy-fundamentals)
+  - [3. Pandas — DataFrames](#3-pandas--dataframes)
+  - [4. Matplotlib — Data Visualization](#4-matplotlib--data-visualization)
+  - [5. Scikit-Learn — Machine Learning](#5-scikit-learn--machine-learning)
+- [Getting Started](#getting-started)
+- [Tech Stack](#tech-stack)
 
 ---
 
-### 2. Clone the Repository
+## Overview
 
-```bash
-git clone https://github.com/Aman554-EQ/RAG-Ollama-LangChain.git
-cd RAG-Ollama-LangChain
-```
+This repository is a **teaching-oriented** collection of Jupyter notebooks designed to walk learners through the Python data science ecosystem step-by-step. Each topic includes:
 
----
-
-### 3. Create and Activate a Virtual Environment
-
-```bash
-# Create virtual environment
-python -m venv .venv
-
-# Activate on Windows
-.venv\Scripts\activate
-
-# Activate on macOS / Linux
-source .venv/bin/activate
-```
+- Concept notebook — theory, explanations, and worked examples
+- Exercise solutions notebook — hands-on problems with full solutions
 
 ---
 
-### 4. Install Dependencies
+## Prerequisites
 
-```bash
-pip install -r requirements.txt
-```
-
----
-
-### 5. Run the App
-
-```bash
-streamlit run src/chat_ui.py
-```
-
-The app will open automatically at [http://localhost:8501](http://localhost:8501).
-
----
-
-## 🐳 Docker Setup (Optional)
-
-To run the app inside a Docker container:
-
-```bash
-# Build the image
-docker build -t rag-chatbot .
-
-# Run the container
-docker run -p 8501:8501 rag-chatbot
-```
-
-Then open [http://localhost:8501](http://localhost:8501) in your browser.
-
-> **Note:** The container needs access to a running Ollama instance. Make sure Ollama is running on your host machine and configure it to accept connections (e.g., set `OLLAMA_HOST=host.docker.internal` if needed).
-
----
-
-## 📂 Usage
-
-Once the app is running:
-
-1. **Upload PDFs** via the sidebar — they are chunked, embedded, and stored in the FAISS index.
-2. **Add website URLs** in the sidebar text area — web pages are fetched, chunked, and indexed the same way.
-3. **Ask questions** in the chat input — the app retrieves the most relevant document chunks and answers using the local LLM.
-4. **Reset** the conversation at any time using the 🗑️ button in the sidebar.
-
----
-
-## 🏛️ Architecture
-
-![1_gXq3HJeXbPO2aGgFDYh0TA](https://github.com/user-attachments/assets/b492d7a7-d280-40ff-b92b-534cd1c415e7)
-
-| Component | Description |
+| Skill | Level Required |
 |---|---|
-| **`chat_ui.py`** | Streamlit interface — handles file uploads, URL input, chat display, and session state |
-| **`llm_rag.py`** | Core RAG handler — retrieves context from the vector store, builds prompts, calls the LLM, and maintains conversation history |
-| **`vector_store.py`** | FAISS wrapper — loads, chunks, embeds, and stores documents; persists the index to disk |
-| **`conversation.py`** | Conversation persistence — serializes and deserializes chat history to/from a local JSON file |
-
-### Flow
-
-```
-User Question
-     │
-     ▼
-Vector Store ──► Retrieve top-k similar chunks
-     │
-     ▼
-Prompt Template (question + context + history)
-     │
-     ▼
-Local LLM (Ollama / llama3.2:1b)
-     │
-     ▼
-Answer displayed in chat
-```
+| Python basics (variables, loops, lists) | Required |
+| Understanding of functions | Required |
+| Linear algebra / statistics | Helpful but not required |
+| Prior ML experience | Not required |
 
 ---
 
-## 📁 Project Structure
+## Repository Structure
 
-```
-RAG-Ollama-LangChain/
-├── src/
-│   ├── chat_ui.py          # Streamlit app entry point
-│   ├── llm_rag.py          # LLM + RAG logic
-│   ├── vector_store.py     # FAISS vector store management
-│   └── conversation.py     # Conversation history persistence
-├── Dockerfile              # Docker configuration
-├── requirements.txt        # Python dependencies
-└── README.md
-```
-
-> Runtime-generated directories (`faiss_index/`, `uploaded_pdfs/`, `conversation.json`) are excluded from version control via `.gitignore`.
-
----
-
-## ⚠️ Limitations
-
-- Initial PDF parsing and embedding may take several seconds for large files.
-- Response latency depends on the chosen LLM and your hardware.
-- The chatbot runs only locally; cloud deployment requires additional configuration for Ollama connectivity.
+`
+python_for_ML_&_Data_Science/
+|
++-- revisiting_functions.ipynb       <- Functions & Modules (lesson)
++-- functions_exercise_solve.ipynb   <- Functions exercises (solutions)
+|
++-- numPy.ipynb                      <- NumPy Fundamentals (lesson)
++-- numpy_exercise_solve.ipynb       <- NumPy exercises (solutions)
+|
++-- pandas.ipynb                     <- Pandas DataFrames (lesson)
++-- pandas_exercise_solve.ipynb      <- Pandas exercises (solutions)
+|
++-- matplotlib.ipynb                 <- Matplotlib Visualization (lesson)
++-- matplotlib_exercise_solve.ipynb  <- Matplotlib exercises (solutions)
+|
++-- scikitlearn.ipynb                <- Scikit-Learn ML Models (lesson)
++-- scikit_learn_solve.ipynb         <- Scikit-Learn exercises (solutions)
+`
 
 ---
 
-## 💡 Ideas for Future Improvements
+## Learning Path
 
-- History-aware retrieval (query rewriting based on conversation context)
-- Tool calling and agentic RAG
-- Additional data sources (Google Drive, Notion, local folders)
-- Cloud deployment
-- Document summarization and answer citation
+Work through the notebooks **in order**. Each module builds on the previous one.
+
+`
+Functions & Modules
+       |
+       v
+ NumPy Arrays  --------------------------+
+       |                                 |
+       v                                 v
+Pandas DataFrames              Matplotlib Visualization
+       |                                 |
+       +----------------+----------------+
+                        v
+               Scikit-Learn (ML)
+`
 
 ---
 
-## 📄 License
+### 1. Functions & Modules
 
-MIT License. See [LICENSE](LICENSE) for details.
+| Notebook | Description |
+|---|---|
+| 
+evisiting_functions.ipynb | Why functions matter, defining and calling functions, arguments, return values, scope, and importing modules |
+| unctions_exercise_solve.ipynb | Practice exercises with full solutions |
+
+**Key topics covered:**
+- Defining reusable functions
+- Positional vs. keyword arguments
+- Return values and scope
+- Importing standard and third-party modules
+- Building modular data pipelines
+
+---
+
+### 2. NumPy Fundamentals
+
+| Notebook | Description |
+|---|---|
+| 
+umPy.ipynb | The bedrock of the Python data science stack — arrays, vectorised operations, indexing, broadcasting, and ufuncs |
+| 
+umpy_exercise_solve.ipynb | Practice exercises with full solutions |
+
+**Key topics covered:**
+- Why NumPy (50-500x faster than Python lists)
+- Creating arrays: np.array, np.arange, np.linspace, np.zeros/ones
+- Array shapes, dtypes, and reshaping
+- Indexing, slicing, and boolean masking
+- Vectorised arithmetic and universal functions (ufuncs)
+- Broadcasting rules
+- Aggregations: sum, mean, std, min, max
+
+---
+
+### 3. Pandas — DataFrames
+
+| Notebook | Description |
+|---|---|
+| pandas.ipynb | Your first real DataFrame — loading, exploring, filtering, grouping, and cleaning tabular data |
+| pandas_exercise_solve.ipynb | Practice exercises using a sales-transactions dataset with full solutions |
+
+**Key topics covered:**
+- Series vs DataFrame mental model
+- Reading data: pd.read_csv
+- Exploring: .head(), .shape, .describe(), .info()
+- Filtering rows and selecting columns
+- groupby and aggregation
+- Handling missing values
+- Merging and joining DataFrames
+
+---
+
+### 4. Matplotlib — Data Visualization
+
+| Notebook | Description |
+|---|---|
+| matplotlib.ipynb | Creating publication-quality plots — line charts, scatter plots, histograms, subplots, and styling |
+| matplotlib_exercise_solve.ipynb | Practice exercises (multi-line plots, labelling, layout) with full solutions |
+
+**Key topics covered:**
+- fig, ax = plt.subplots() workflow
+- Line plots, scatter plots, bar charts, histograms
+- Titles, axis labels, legends, and grids
+- Subplots and figure layout (plt.tight_layout())
+- Customising colours, line styles, and markers
+- Common pitfalls (overlapping labels, squished figures)
+
+---
+
+### 5. Scikit-Learn — Machine Learning
+
+| Notebook | Description |
+|---|---|
+| scikitlearn.ipynb | End-to-end ML pipelines — classification (Iris) and regression (California Housing) using scikit-learn's unified API |
+| scikit_learn_solve.ipynb | Practice exercises (KNN classifier, different models) with full solutions |
+
+**Key topics covered:**
+
+The ML workflow:
+
+`
+Load & Explore -> Prepare X, y -> Train/Test Split -> Fit -> Predict -> Evaluate
+`
+
+- Loading datasets: load_iris, fetch_california_housing
+- Train/test split: train_test_split
+- Preprocessing: StandardScaler
+- Classifiers: Logistic Regression, k-Nearest Neighbours
+- Regressors: Linear Regression
+- Evaluation: accuracy, classification report, confusion matrix, RMSE
+- Cross-validation: cross_val_score
+- Hyperparameter tuning: GridSearchCV
+- Pipelines: sklearn.pipeline.Pipeline
+- Common ML pitfalls: data leakage, overfitting, train/test contamination
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+`
+git clone https://github.com/Aman554-EQ/Teaching-Python-for-ML-and-Data-Science.git
+cd Teaching-Python-for-ML-and-Data-Science
+`
+
+### 2. Create a virtual environment (recommended)
+`
+# Using conda (recommended for data science)
+conda create -n ds-env python=3.11
+conda activate ds-env
+
+# Or using venv
+python -m venv ds-env
+ds-env\Scripts\activate      # Windows
+source ds-env/bin/activate   # macOS / Linux
+`
+
+### 3. Install dependencies
+`
+pip install numpy pandas matplotlib scikit-learn jupyter
+`
+
+### 4. Launch Jupyter
+`
+jupyter notebook
+`
+
+Then open any notebook from the browser interface and follow the Learning Path order above.
+
+---
+
+## Tech Stack
+
+| Library | Version (tested) | Purpose |
+|---|---|---|
+| Python | 3.10+ | Language |
+| NumPy | 1.24+ | Numerical arrays & linear algebra |
+| Pandas | 2.0+ | Tabular data manipulation |
+| Matplotlib | 3.7+ | Data visualisation |
+| Scikit-learn | 1.3+ | Machine learning models & pipelines |
+| Jupyter | 7.0+ | Interactive notebook environment |
+
+---
+
+> Tip: If you are completely new to Python, work through revisiting_functions.ipynb first — the rest of the stack will make much more sense!
