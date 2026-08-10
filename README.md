@@ -43,22 +43,24 @@ This repository is a **teaching-oriented** collection of Jupyter notebooks desig
 ## Repository Structure
 
 `
+```text
 python_for_ML_&_Data_Science/
-|
-+-- revisiting_functions.ipynb       <- Functions & Modules (lesson)
-+-- functions_exercise_solve.ipynb   <- Functions exercises (solutions)
-|
-+-- numPy.ipynb                      <- NumPy Fundamentals (lesson)
-+-- numpy_exercise_solve.ipynb       <- NumPy exercises (solutions)
-|
-+-- pandas.ipynb                     <- Pandas DataFrames (lesson)
-+-- pandas_exercise_solve.ipynb      <- Pandas exercises (solutions)
-|
-+-- matplotlib.ipynb                 <- Matplotlib Visualization (lesson)
-+-- matplotlib_exercise_solve.ipynb  <- Matplotlib exercises (solutions)
-|
-+-- scikitlearn.ipynb                <- Scikit-Learn ML Models (lesson)
-+-- scikit_learn_solve.ipynb         <- Scikit-Learn exercises (solutions)
+│
+├── revisiting_functions.ipynb       <- Functions & Modules (lesson)
+├── functions_exercise_solve.ipynb   <- Functions exercises (solutions)
+│
+├── numPy.ipynb                      <- NumPy Fundamentals (lesson)
+├── numpy_exercise_solve.ipynb       <- NumPy exercises (solutions)
+│
+├── pandas.ipynb                     <- Pandas DataFrames (lesson)
+├── pandas_exercise_solve.ipynb      <- Pandas exercises (solutions)
+│
+├── matplotlib.ipynb                 <- Matplotlib Visualization (lesson)
+├── matplotlib_exercise_solve.ipynb  <- Matplotlib exercises (solutions)
+│
+├── scikitlearn.ipynb                <- Scikit-Learn ML Models (lesson)
+└── scikit_learn_solve.ipynb         <- Scikit-Learn exercises (solutions)
+```
 `
 
 ---
