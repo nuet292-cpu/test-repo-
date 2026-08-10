@@ -42,7 +42,6 @@ This repository is a **teaching-oriented** collection of Jupyter notebooks desig
 
 ## Repository Structure
 
-`
 ```text
 python_for_ML_&_Data_Science/
 │
@@ -61,7 +60,7 @@ python_for_ML_&_Data_Science/
 ├── scikitlearn.ipynb                <- Scikit-Learn ML Models (lesson)
 └── scikit_learn_solve.ipynb         <- Scikit-Learn exercises (solutions)
 ```
-`
+
 
 ---
 
