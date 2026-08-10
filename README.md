@@ -63,25 +63,6 @@ python_for_ML_&_Data_Science/
 
 ---
 
-## Learning Path
-
-Work through the notebooks **in order**. Each module builds on the previous one.
-
-`
-Functions & Modules
-       |
-       v
- NumPy Arrays  --------------------------+
-       |                                 |
-       v                                 v
-Pandas DataFrames              Matplotlib Visualization
-       |                                 |
-       +----------------+----------------+
-                        v
-               Scikit-Learn (ML)
-`
-
----
 
 ### 1. Functions & Modules
 
