@@ -174,7 +174,7 @@ cd Teaching-Python-for-ML-and-Data-Science
 `
 
 ### 2. Create a virtual environment (recommended)
-`
+```
 # Using conda (recommended for data science)
 conda create -n ds-env python=3.11
 conda activate ds-env
@@ -183,17 +183,17 @@ conda activate ds-env
 python -m venv ds-env
 ds-env\Scripts\activate      # Windows
 source ds-env/bin/activate   # macOS / Linux
-`
+```
 
 ### 3. Install dependencies
-`
+```
 pip install numpy pandas matplotlib scikit-learn jupyter
-`
+```
 
 ### 4. Launch Jupyter
-`
+```
 jupyter notebook
-`
+```
 
 Then open any notebook from the browser interface and follow the Learning Path order above.
 
