@@ -24,18 +24,25 @@ Contributions are always welcome!
 - [204 IELTS listening tests](https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/)
 - [Cambridge IELTS books tests (1–21)](https://practicepteonline.com/official-ielts-tests/)
 - [IELTS UP listening practice](https://ielts-up.com)
-- [IELTS Liz listening practice](https://ieltsliz.com/ielts-listening/)
+- [IELTS Liz listening](https://ieltsliz.com/ielts-listening/)
 
 
 ## Reading
 
-- [Mini-IELTS reading tests](https://mini-ielts.com)
-- [225 IELTS Academic Reading tests](#)
-- [100 IELTS General Reading tests](#)
-- [Cambridge IELTS books (1 - 15)](#)
-- [IELTS UP Academic Reading tests](https://ielts-up.com)
-- [IELTS UP General Reading tests](https://ielts-up.com)
+- [Question-Type](https://ieltsliz.com/ielts-reading-question-types/)
+- [Skimming and Scanning](https://takeielts.britishcouncil.org/blog/skimming-and-scanning-ielts-reading-tips)
+- [IELTS Liz Reading](https://ieltsliz.com/ielts-reading-lessons-information-and-tips/)
+- [#1 Reading-Question-Ordered-Unordered](https://intellecta.app/guides/ielts-reading-question-types)
+- [#2 Reading-Question-Ordered-Unordered](https://www.allearsenglish.com/ielts-energy-1379-part-2-which-ielts-reading-answers-are-not-in-order/)
+- [Mini-IELTS reading tests](https://mini-ielts.com/reading)
+- [315 IELTS Academic Reading tests](https://practicepteonline.com/ielts-reading-tests/)
+- [100 IELTS General Reading tests](https://practicepteonline.com/ielts-general-reading-tests/)
+- [Cambridge IELTS books (1 - 15)](https://ieltspracticeonline.com/ielts-books/)
+- [IELTS UP Academic Reading tests](https://ielts-up.com/reading/ielts-reading-practice.html#academic)
+- [IELTS UP General Reading tests](https://ielts-up.com/reading/ielts-reading-practice.html#general)
 
+
+  
 ## Writing
 
 - [Improve Your Writing Score](#)
