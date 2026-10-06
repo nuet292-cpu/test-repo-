@@ -9,18 +9,18 @@ Contributions are always welcome!
 
 ## Table of Contents
 
-- [Band Score Explained](#Band Score Explained)
+- [Band Score Explained](#Band_Score_Explained)
 - [Listening](#listening)
 - [Reading](#reading)
 - [Writing](#writing)
 - [Speaking](#speaking)
 - [Mock Tests](#mock-tests)
-- [Additional Resources](#Additional Resources)
+- [Additional Resources](#Additional_Resources)
   
 
 ---
 
-## Band Score Explained
+## Band_Score_Explained
 
 - [IELTS Liz listening](https://ieltsliz.com/ielts-band-scores/)
 - [IELTS 2026 Explained in 31 Minutes](https://www.youtube.com/watch?v=3n4uSDoI438)
@@ -91,7 +91,7 @@ Contributions are always welcome!
 
 
 
-## Additional Resources
+## Additional_Resources
 
 - [IELTS-Simon](https://ielts-simon.study/)
 - [Useful resource by LIZ](https://ieltsliz.com/useful-websites-and-resources-for-ielts/)
