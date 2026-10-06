@@ -9,14 +9,24 @@ Contributions are always welcome!
 
 ## Table of Contents
 
+- [Band Score Explained](#Band Score Explained)
 - [Listening](#listening)
 - [Reading](#reading)
 - [Writing](#writing)
 - [Speaking](#speaking)
 - [Mock Tests](#mock-tests)
+- [Additional Resources](#Additional Resources)
   
 
 ---
+
+## Band Score Explained
+
+- [IELTS Liz listening](https://ieltsliz.com/ielts-band-scores/)
+- [IELTS 2026 Explained in 31 Minutes](https://www.youtube.com/watch?v=3n4uSDoI438)
+
+
+
 
 ## Listening
 
@@ -43,6 +53,7 @@ Contributions are always welcome!
 - [IELTS UP General Reading tests](https://ielts-up.com/reading/ielts-reading-practice.html#general)
 
 
+
   
 ## Writing
 
@@ -54,6 +65,8 @@ Contributions are always welcome!
 - [Model Essays with Feedback](https://www.ieltsbuddy.com/ielts-sample-essays.html)
 - [Collection of writing topics](https://writing9.com/ielts-writing-task-2-topics)
 - [IELTS Writing vocabulary](https://ielts-up.com/writing/ielts-vocabulary-writing.html)
+
+
 
 ## Speaking
 
@@ -78,8 +91,24 @@ Contributions are always welcome!
 
 
 
+## Additional Resources
+
+- [IELTS-Simon](https://ielts-simon.study/)
+- [Useful resource by LIZ](https://ieltsliz.com/useful-websites-and-resources-for-ielts/)
+- [IELTS-ORG](https://ielts.org/take-a-test/preparation-resources)
+- [British Council](https://takeielts.britishcouncil.org/prepare/ielts-preparation-materials)
+- [IDP Ielts](https://www.idp.com/ielts/)
+
+
+
 ---
+
+
 
 ## Contributing
 
 Found a great resource? Open a pull request or an issue to add it to the list.
+
+
+
+
