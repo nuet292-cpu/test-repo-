@@ -1,4 +1,4 @@
-# IELTS Resources
+# awesome-IELTS Resources
 
 A collection of all the great IELTS materials, tools, tips, tricks, and applications.
 
@@ -20,11 +20,12 @@ Contributions are always welcome!
 
 ## Listening
 
+- [IELTS Liz listening](https://ieltsliz.com/ielts-listening/)
 - [Mini-IELTS listening tests](https://mini-ielts.com)
 - [204 IELTS listening tests](https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/)
 - [Cambridge IELTS books tests (1–21)](https://practicepteonline.com/official-ielts-tests/)
 - [IELTS UP listening practice](https://ielts-up.com)
-- [IELTS Liz listening](https://ieltsliz.com/ielts-listening/)
+
 
 
 ## Reading
@@ -45,21 +46,23 @@ Contributions are always welcome!
   
 ## Writing
 
-- [Improve Your Writing Score](#)
-- [248 Band 9 IELTS essays](#)
-- [100+ Band 8 IELTS essays](#)
-- [Model Essays with Feedback](#)
-- [IELTS Writing Task 1 for Academic](#)
-- [IELTS Letter Writing tips](#)
-- [Collection of writing topics](#)
-- [IELTS Writing vocabulary](#)
+- [IELTS Writing Task 1 for Academic](https://ieltsliz.com/ielts-writing-task-1-lessons-and-tips/)
+- [IELTS Writing Task 2 for Academic](https://ieltsliz.com/ielts-writing-task-2/)
+- [IELTS Writing Task 1 for GT](https://ieltsliz.com/ielts-writing-task-1-lessons-and-tips/#GT-letter)
+- [IELTS Writing Task 1: Lessons, Tips and Strategies](https://www.ieltsbuddy.com/ielts-writing-task-1.html)
+- [Collection of writing topics](https://writing9.com/ielts-writing-task-2-topics)
+- [Model Essays with Feedback](https://www.ieltsbuddy.com/ielts-sample-essays.html)
+- [Collection of writing topics](https://writing9.com/ielts-writing-task-2-topics)
+- [IELTS Writing vocabulary](https://ielts-up.com/writing/ielts-vocabulary-writing.html)
 
 ## Speaking
 
-- [IELTS Speaking vocabulary](#)
-- [IELTS Speaking Part 1 topics](#)
-- [IELTS Speaking Part 2 topics](#)
-- [IELTS Speaking Part 3 topics](#)
+- [IELTS Speaking vocabulary](https://ielts-up.com/speaking/ielts-vocabulary-speaking.html)
+- [IELTS Speaking Part 1 topics](https://ieltsliz.com/ielts-speaking-part-1-topics/)
+- [IELTS Speaking Part 2 topics](https://ieltsliz.com/ielts-speaking-part-2-topics/)
+- [IELTS Speaking Part 3 topics](https://ieltsliz.com/ielts-speaking-part-3-topics-2/)
+- [Makkar IELTS – Complete Guide for Students](https://banglayielts.com/blog/makkar-ielts)
+- [Latest Makkar Cue Cards for IELTS Speaking](https://practicepteonline.com/ielts-speaking-latest-makkar-cue-cards/)
 
 
 ## Mock Tests
@@ -70,6 +73,8 @@ Contributions are always welcome!
 - [IELTS Next](https://ieltsnext.online/)
 - [CD IELTS](https://cdielts.org/)
 - [Keen IELTS](https://keenielts.com/)
+- [IELTS Academic Mock tests Year Wise](https://ieltsonlinetests.com/ielts-exam-library#academic)
+- [IELTS GT Mock tests Year Wise](https://ieltsonlinetests.com/ielts-exam-library#general-test)
 
 
 
