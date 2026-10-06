@@ -108,7 +108,16 @@ Contributions are always welcome!
 
 ## Contributing
 
-Found a great resource? Open a pull request or an issue to add it to the list.
+Found a great resource? If you have a useful IELTS resource to add, feel free to open a pull request or issue!
+
+---
+
+## ⭐ Support
+
+If you found this collection helpful, please consider giving the repository a ⭐ on GitHub. It helps more IELTS learners discover these resources.
+
+**Made with ❤️ by [Aman554-EQ](https://github.com/Aman554-EQ)**
+
 
 
 
