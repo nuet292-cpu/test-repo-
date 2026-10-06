@@ -22,8 +22,9 @@ Contributions are always welcome!
 
 ## Band_Score_Explained
 
-- [IELTS Liz listening](https://ieltsliz.com/ielts-band-scores/)
+- [Band Score Explained](https://ieltsliz.com/ielts-band-scores/)
 - [IELTS 2026 Explained in 31 Minutes](https://www.youtube.com/watch?v=3n4uSDoI438)
+  
 
 
 
