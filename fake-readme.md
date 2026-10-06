@@ -21,10 +21,11 @@ Contributions are always welcome!
 ## Listening
 
 - [Mini-IELTS listening tests](https://mini-ielts.com)
-- [204 IELTS listening tests](#https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/)
-- [Cambridge IELTS books test (1 - 21)](#https://practicepteonline.com/official-ielts-tests/)
+- [204 IELTS listening tests](https://practicepteonline.com/ielts-listening-tests-ielts-listening-practice-test-ielts-listening-pdf-ielts-cambridge-test/)
+- [Cambridge IELTS books tests (1–21)](https://practicepteonline.com/official-ielts-tests/)
 - [IELTS UP listening practice](https://ielts-up.com)
-- [IELTS LIZ]([https://mini-ielts.com](https://ieltsliz.com/ielts-listening/)
+- [IELTS Liz listening practice](https://ieltsliz.com/ielts-listening/)
+
 
 ## Reading
 
